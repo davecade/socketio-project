@@ -8,13 +8,8 @@ const { Server } = require("socket.io");
 
 const io = new Server(expressServer);
 
-// first param is event, second is callback
 io.on("connection", (socket) => {
-    console.log("New user connected");
-
-    socket.on("MyEvent", (msg) => {
-        console.log(msg);
-    });
+    io.sockets.emit('MyBroadcast', 'Hello this is a broadcast')
 });
 
 app.get("/", (req, res) => {
