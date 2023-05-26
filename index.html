@@ -12,9 +12,9 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        let socket = io()
+        let socket = io("/sell")
 
-        socket.on('MyBroadcast', function(data){
+        socket.on('MyEvent', function(data){
             document.getElementById('msg').innerHTML = data
         })
 

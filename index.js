@@ -8,8 +8,14 @@ const { Server } = require("socket.io");
 
 const io = new Server(expressServer);
 
-io.on("connection", (socket) => {
-    io.sockets.emit('MyBroadcast', 'Hello this is a broadcast')
+let buyNsp = io.of("/buy");
+buyNsp.on("connection", (socket) => {
+    buyNsp.emit("MyEvent", "Hello buy namespace");
+});
+
+let sellNsp = io.of("/sell");
+sellNsp.on("connection", (socket) => {
+    sellNsp.emit("MyEvent", "Hello sell namespace");
 });
 
 app.get("/", (req, res) => {
