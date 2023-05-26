@@ -7,16 +7,18 @@
     <title>Sock IO Learning</title>
 </head>
 <body>
-    <h1 id="myTime"></h1>
+    <input type="text" id="name">
+    <button id="send" onClick="send()">Send</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io()
 
-        socket.on('MyEvent', (msg) => {
-            const myTime_EL = document.getElementById('myTime')
-            myTime_EL.innerHTML = msg
-        })
+        function send(){
+            let name = document.getElementById('name')
+            socket.emit("MyEvent", name.value)
+        }
+
     </script>
 </body>
 </html>
