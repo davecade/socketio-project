@@ -7,6 +7,16 @@
     <title>Sock IO Learning</title>
 </head>
 <body>
-    <h1>Easy Socket Project</h1>
+    <h1 id="myTime"></h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io()
+
+        socket.on('MyEvent', (msg) => {
+            const myTime_EL = document.getElementById('myTime')
+            myTime_EL.innerHTML = msg
+        })
+    </script>
 </body>
 </html>
